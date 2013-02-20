@@ -28,8 +28,7 @@ describe('create profile test', function () {
     });
 
   });
-  it('should create views if needed', function (done) {
-
+  it('should create profile', function (done) {
     var data = {
       db: db,
       email: email
