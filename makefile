@@ -4,3 +4,7 @@ test:
 	$(MOCHA) $(shell find test -name "*-test.js") --test --reporter $(REPORTER)
 db:
 	$(MOCHA) $(shell find test -name "get-db-test.js") --test --reporter $(REPORTER)
+create:
+	$(MOCHA) $(shell find test -name "create-profile-test.js") --test --reporter $(REPORTER)
+
+.PHONY: test
