@@ -1,5 +1,5 @@
 var should = require('should');
-var getProfile = require('../lib/getProfile');
+var getProfile = require('../index');
 describe('Get Profile', function () {
   var db = {};
   it('should be wired up correctly', function (done) {
