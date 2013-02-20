@@ -1,7 +1,8 @@
 var async = require('async');
 var inspect = require('eyespect').inspector();
 
-var findUserProfile = require('../lib/findUserProfile');
+var couchProfile = require('../index');
+var findProfile = couchProfile.findProfile;
 var createUserProfile = require('../lib/createUserProfile');
 var should = require('should');
 var getDB = require('./getDB');
@@ -40,7 +41,7 @@ describe('find profiles', function () {
       db: db,
       email: email
     };
-    findUserProfile(data, function (err, reply) {
+    findProfile(data, function (err, reply) {
       should.not.exist(err);
       should.not.exist(reply);
       done();
@@ -61,7 +62,7 @@ describe('find profiles', function () {
         should.not.exist(err);
         should.exist(reply, 'profile not created correctly');
         email.should.eql(reply.email);
-        findUserProfile(data, function (err, findReply) {
+        findProfile(data, function (err, findReply) {
           should.not.exist(err);
           should.exist(findReply, 'profile not found');
           done();
