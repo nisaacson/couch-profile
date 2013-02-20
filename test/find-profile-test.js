@@ -1,3 +1,4 @@
+var async = require('async');
 var inspect = require('eyespect').inspector();
 
 var findUserProfile = require('../lib/findUserProfile');
@@ -18,12 +19,11 @@ describe('find profiles', function () {
       should.not.exist(err);
       should.exist(reply);
       db = reply;
+      done();
     });
-
   });
 
-
-  it('should not find non-existant profiles', function (done) {
+  beforeEach(function (done) {
     var removeData = {
       db: db,
       email: email
@@ -32,12 +32,18 @@ describe('find profiles', function () {
       should.not.exist(err);
       done();
     });
+  });
+
+
+  it('should not find non-existant profiles', function (done) {
+    inspect('removed all profiles');
     var data = {
       db: db,
       email: email
     };
     findUserProfile(data, function (err, reply) {
       should.not.exist(err);
+      inspect(reply,'reply');
       should.not.exist(reply);
       done();
     });
@@ -68,23 +74,21 @@ describe('find profiles', function () {
 });
 
 
-function removeIfNeeded(data, cb) {
+function removeIfNeeded(data, callback) {
   var db = data.db;
   var email = data.email;
   db.view('user_profile/byEmail', {key: email}, function (err, docs) {
-    if (err) { return cb(err); }
+    if (err) { return callback(err); }
     if (docs.length === 0) {
-      return cb();
+      return callback();
     };
-    for (var i in docs) {
-      var doc = docs[i];
-      var id = doc.value._id;
-      var rev = doc.value._rev;
-      db.remove(id, rev, function (err, reply) {
-
-        if (err) { return cb(err); }
-      });
-    }
-    cb();
+    async.forEachSeries(
+      docs,
+      function (doc, cb) {
+        var id = doc.value._id;
+        var rev = doc.value._rev;
+        db.remove(id, rev, cb);
+      },
+      callback);
   });
 }

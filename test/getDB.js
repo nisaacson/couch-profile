@@ -1,3 +1,4 @@
+var inspect = require('eyespect').inspector({maxLength: 200000});
 var cradle = require('cradle');
 module.exports = function (config, cb) {
   var host = config.get('couch:host');
@@ -8,6 +9,7 @@ module.exports = function (config, cb) {
     raw: false
   };
 
+  inspect(database,'database');
   var username = config.get('couch:username');
   var password = config.get('couch:password');
   if (username) {

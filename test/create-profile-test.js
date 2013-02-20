@@ -20,6 +20,7 @@ describe('create profile test', function () {
         db: db,
         email: email
       };
+      inspect('removing profiles');
       removeIfNeeded(removeData, function (err) {
         should.not.exist(err);
         done();
@@ -63,8 +64,10 @@ function removeIfNeeded(data, cb) {
       var rev = doc.value._rev;
       db.remove(id, rev, function (err, reply) {
         if (err) { return cb(err); }
+
       });
     }
+    inspect('done removing profiles');
     cb();
   });
 }
