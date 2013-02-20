@@ -1,0 +1,25 @@
+{
+  "name": "couch-profile",
+  "version": "1.0.0",
+  "description": "Store profile information in couchdb",
+  "main": "index.js",
+  "scripts": {
+    "test": "node_modules/.bin/mocha --reporter sepc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/nisaacson/couch-profile.git"
+  },
+  "keywords": [
+    "couchdb",
+    "cradle",
+    "user",
+    "profile",
+    "profiles",
+    "browserid"
+  ],
+  "author": "Noah Isaacson",
+  "license": "BSD",
+  "readmeFilename": "README.md",
+  "gitHead": "1dd84c5c1cf26baff131be62e97aab7faabe0287"
+}
