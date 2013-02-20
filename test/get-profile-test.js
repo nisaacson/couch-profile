@@ -1,5 +1,5 @@
 var should = require('should');
-var getProfile = require('../index');
+var couchProfile = require('../index');
 describe('Get Profile', function () {
   var db = {};
   it('should be wired up correctly', function (done) {
@@ -25,7 +25,7 @@ describe('Get Profile', function () {
       email: email
     };
 
-    getProfile(data, function (err, reply) {
+    couchProfile.getProfile(data, function (err, reply) {
       should.not.exist(err);
       findUserProfileCallCount.should.eql(1);
       createUserProfileCallCount.should.eql(1);

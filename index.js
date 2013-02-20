@@ -1,5 +1,12 @@
 var rk = require('required-keys');
-module.exports = function (data, cb) {
+var createViews = require('./lib/createViews');
+
+module.exports = {
+  getProfile: getProfile,
+  createViews: createViews
+};
+
+function getProfile(data, cb) {
   var findUserProfile = data.findUserProfile || require('./lib/findUserProfile');
   var createUserProfile = data.createUserProfile || require('./lib/createUserProfile');
   var keys = ['db', 'email'];

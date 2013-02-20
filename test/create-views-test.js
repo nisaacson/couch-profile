@@ -12,7 +12,6 @@ describe('create couchdb views', function () {
   before(function (done) {
     getDB(config, function (err, reply) {
       should.not.exist(err);
-      should.exist(reply);
       db = reply;
       done();
     });

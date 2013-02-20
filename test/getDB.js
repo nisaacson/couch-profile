@@ -19,11 +19,6 @@ module.exports = function (config, cb) {
 
   var c = new(cradle.Connection)(host, port, opts);
   var db = c.database(database);
-  db.exists(function (err, exists) {
-    if (err) { return cb(err); }
-    if (exists) {
-      return cb(null, db);
-    }
-    return cb('database: ' + database + ' does not exist');
-  });
+  cb(null, db);
+  // return db;
 };
