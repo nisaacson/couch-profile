@@ -4,7 +4,7 @@
   "description": "Store profile information in couchdb",
   "main": "index.js",
   "scripts": {
-    "test": "node_modules/.bin/mocha --reporter sepc"
+    "test": "node_modules/.bin/mocha --reporter spec"
   },
   "repository": {
     "type": "git",
@@ -21,5 +21,16 @@
   "author": "Noah Isaacson",
   "license": "BSD",
   "readmeFilename": "README.md",
-  "gitHead": "1dd84c5c1cf26baff131be62e97aab7faabe0287"
+  "gitHead": "1dd84c5c1cf26baff131be62e97aab7faabe0287",
+  "dependencies": {
+    "eyespect": "~0.1.8",
+    "cradle": "~0.6.4",
+    "required-keys": "~1.0.4"
+  },
+  "devDependencies": {
+    "should": "~1.2.2",
+    "nconf": "~0.6.7",
+    "cradle": "~0.6.4",
+    "mocha": "~1.8.1"
+  }
 }

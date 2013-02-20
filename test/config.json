@@ -1,0 +1,7 @@
+{
+  "couch": {
+    "host": "http://localhost",
+    "database": "couchdb_profiles",
+    "port": 5984
+  }
+}
