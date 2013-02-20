@@ -8,8 +8,6 @@ module.exports = function (config, cb) {
     cache: false,
     raw: false
   };
-
-  inspect(database,'database');
   var username = config.get('couch:username');
   var password = config.get('couch:password');
   if (username) {

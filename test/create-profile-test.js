@@ -1,3 +1,4 @@
+var async = require('async');
 var inspect = require('eyespect').inspector();
 var createUserProfile = require('../lib/createUserProfile');
 var should = require('should');
@@ -20,7 +21,6 @@ describe('create profile test', function () {
         db: db,
         email: email
       };
-      inspect('removing profiles');
       removeIfNeeded(removeData, function (err) {
         should.not.exist(err);
         done();
@@ -50,24 +50,20 @@ describe('create profile test', function () {
 });
 
 
-function removeIfNeeded(data, cb) {
+function removeIfNeeded(data, callback) {
   var db = data.db;
   var email = data.email;
   db.view('user_profile/byEmail', {key: email}, function (err, docs) {
-    if (err) { return cb(err); }
+    if (err) { return callback(err); }
     if (docs.length === 0) {
-      return cb();
+      return callback();
     };
-    for (var i in docs) {
-      var doc = docs[i];
-      var id = doc.value._id;
-      var rev = doc.value._rev;
-      db.remove(id, rev, function (err, reply) {
-        if (err) { return cb(err); }
-
-      });
-    }
-    inspect('done removing profiles');
-    cb();
+    async.forEachSeries(
+      docs,
+      function (doc, cb) {
+        var id = doc.value._id;
+        var rev = doc.value._rev;
+        db.remove(id, rev, cb);
+      }, callback);
   });
 }

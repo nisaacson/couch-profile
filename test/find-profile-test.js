@@ -36,14 +36,12 @@ describe('find profiles', function () {
 
 
   it('should not find non-existant profiles', function (done) {
-    inspect('removed all profiles');
     var data = {
       db: db,
       email: email
     };
     findUserProfile(data, function (err, reply) {
       should.not.exist(err);
-      inspect(reply,'reply');
       should.not.exist(reply);
       done();
     });
