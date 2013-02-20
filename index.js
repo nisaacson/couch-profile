@@ -1,8 +1,10 @@
 var rk = require('required-keys');
 var createViews = require('./lib/createViews');
+var findProfile = require('./lib/findUserProfile');
 
 module.exports = {
   getProfile: getProfile,
+  findProfile: findProfile,
   createViews: createViews
 };
 
