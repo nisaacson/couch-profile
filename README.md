@@ -1,5 +1,6 @@
 Store profile information in couchdb
 
+[![Build Status](https://travis-ci.org/nisaacson/couch-profile.png)](https://travis-ci.org/nisaacson/couch-profile)
 [![Dependency Status](https://david-dm.org/nisaacson/couch-profile/status.png)](https://david-dm.org/nisaacson/couch-profile)
 Dependency tracking by [David](https://david-dm.org/)
 
