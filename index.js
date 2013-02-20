@@ -15,8 +15,12 @@ function getProfile(data, cb) {
   var err = rk.truthySync(data, keys);
   if (err) { return cb(err); }
   findUserProfile(data, function (err, reply) {
-    if (err) { return cb(err); }
-    if (reply) { return reply(); }
+    if (err) {
+      return cb(err);
+    }
+    if (reply) {
+      return cb(null, reply);
+    }
     createUserProfile(data, cb);
   });
 };
