@@ -38,7 +38,26 @@ var profileData = {
   db: db,
   email: 'foo@example.com'
 }
-couchProfile.getProfile(viewData, function(err, profile) {
+couchProfile.getProfile(profileData, function(err, profile) {
+  if (err) {
+    inspect(err, 'error getting profile');
+    return;
+  }
+  inspect(profile, 'got couch profile');
+});
+```
+
+
+## Find Profile
+Lookup a profile but don't create new ones
+```javascript
+var couchProfile = require('couch-profile');
+var db = <cradle database connection>
+var profileData = {
+  db: db,
+  email: 'foo@example.com'
+}
+couchProfile.getProfile(profileData, function(err, profile) {
   if (err) {
     inspect(err, 'error getting profile');
     return;
