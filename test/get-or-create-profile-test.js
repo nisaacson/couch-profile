@@ -1,3 +1,4 @@
+require('./createDB')
 var should = require('should');
 var couchProfile = require('../index');
 describe('Get Or create Profile', function () {

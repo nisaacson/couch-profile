@@ -5,7 +5,7 @@ test:
 db:
 	$(MOCHA) $(shell find test -name "get-db-test.js") --test --reporter $(REPORTER)
 create:
-	$(MOCHA) $(shell find test -name "create-profile-test.js") --test --reporter $(REPORTER)
+	$(MOCHA) $(shell find test -name "create-profile-test.js") --ignore-leaks --test --reporter $(REPORTER)
 get-or-create:
 	$(MOCHA) test/get-or-create-profile-test.js --test --reporter $(REPORTER)
 hash-password:

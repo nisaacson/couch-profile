@@ -1,3 +1,4 @@
+require('./createDB')
 var async = require('async');
 var inspect = require('eyespect').inspector();
 

@@ -1,3 +1,4 @@
+require('./createDB')
 var bcrypt = require('bcrypt-nodejs')
 var async = require('async')
 var createUserProfile = require('../lib/createUserProfile')
