@@ -1,6 +1,5 @@
 var bcrypt = require('bcrypt-nodejs')
 var async = require('async')
-var inspect = require('eyespect').inspector()
 var createUserProfile = require('../lib/createUserProfile')
 var should = require('should')
 var getDB = require('./getDB')
@@ -30,6 +29,8 @@ describe('create profile test', function () {
 
   })
   it('should create profile with password', function (done) {
+    this.slow('6s')
+    this.timeout('12s')
     var password = 'fooPassword'
     var data = {
       db: db,
@@ -54,6 +55,7 @@ describe('create profile test', function () {
       })
     })
   })
+
   it('should create profile without password', function (done) {
     var password = 'fooPassword'
     var data = {
@@ -64,7 +66,7 @@ describe('create profile test', function () {
       should.not.exist(err)
       reply.should.have.property('id')
       reply.should.have.property('rev')
-      reply.should.have.property('hash')
+      reply.should.not.have.property('hash')
       var id = reply.id
       db.get(id, function (err, reply) {
         should.not.exist(err)

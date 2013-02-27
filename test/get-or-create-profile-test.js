@@ -1,4 +1,3 @@
-var inspect = require('eyespect').inspector()
 var should = require('should');
 var couchProfile = require('../index');
 describe('Get Or create Profile', function () {
@@ -26,7 +25,6 @@ describe('Get Or create Profile', function () {
       email: email
     };
 
-    inspect(couchProfile, 'couchProfile')
     couchProfile.getOrCreateProfile(data, function (err, reply) {
       should.not.exist(err);
       findUserProfileCallCount.should.eql(1);
