@@ -1,6 +1,7 @@
+var inspect = require('eyespect').inspector()
 var should = require('should');
 var couchProfile = require('../index');
-describe('Get Profile', function () {
+describe('Get Or create Profile', function () {
   var db = {};
   it('should be wired up correctly', function (done) {
     var email = 'foo@example.com';
@@ -25,7 +26,8 @@ describe('Get Profile', function () {
       email: email
     };
 
-    couchProfile.getProfile(data, function (err, reply) {
+    inspect(couchProfile, 'couchProfile')
+    couchProfile.getOrCreateProfile(data, function (err, reply) {
       should.not.exist(err);
       findUserProfileCallCount.should.eql(1);
       createUserProfileCallCount.should.eql(1);
