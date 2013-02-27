@@ -1,26 +1,12 @@
-var rk = require('required-keys');
-var createViews = require('./lib/createViews');
-var findProfile = require('./lib/findUserProfile');
-
+var createViews = require('./lib/createViews')
+var findProfile = require('./lib/findUserProfile')
+var getOrCreateProfile = require('./lib/getOrCreateProfile')
+var checkPassword = require('./lib/checkPassword')
+var hashPassword = require('./lib/hashPassword')
 module.exports = {
-  getProfile: getProfile,
+  getOrCreateProfile: getOrCreateProfile,
   findProfile: findProfile,
+  checkPassword: checkPassword,
+  hashPassword: hashPassword,
   createViews: createViews
-};
-
-function getProfile(data, cb) {
-  var findUserProfile = data.findUserProfile || require('./lib/findUserProfile');
-  var createUserProfile = data.createUserProfile || require('./lib/createUserProfile');
-  var keys = ['db', 'email'];
-  var err = rk.truthySync(data, keys);
-  if (err) { return cb(err); }
-  findUserProfile(data, function (err, reply) {
-    if (err) {
-      return cb(err);
-    }
-    if (reply) {
-      return cb(null, reply);
-    }
-    createUserProfile(data, cb);
-  });
-};
+}
