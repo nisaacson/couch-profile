@@ -40,10 +40,10 @@ describe('create profile test', function () {
     }
     createUserProfile(data, function (err, reply) {
       should.not.exist(err)
-      reply.should.have.property('id')
-      reply.should.have.property('rev')
+      reply.should.have.property('_id')
+      reply.should.have.property('_rev')
       reply.should.have.property('hash')
-      var id = reply.id
+      var id = reply._id
       db.get(id, function (err, reply) {
         should.not.exist(err)
         should.exist(reply)
@@ -65,10 +65,10 @@ describe('create profile test', function () {
     }
     createUserProfile(data, function (err, reply) {
       should.not.exist(err)
-      reply.should.have.property('id')
-      reply.should.have.property('rev')
+      reply.should.have.property('_id')
+      reply.should.have.property('_rev')
       reply.should.not.have.property('hash')
-      var id = reply.id
+      var id = reply._id
       db.get(id, function (err, reply) {
         should.not.exist(err)
         should.exist(reply)
