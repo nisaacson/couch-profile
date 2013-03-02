@@ -1,3 +1,4 @@
+var exec = require('child_process').exec;
 var inspect = require('eyespect').inspector({maxLength: 200000});
 var should = require('should');
 var getDB = require('./getDB');
@@ -9,16 +10,18 @@ var configFilePath = path.join(__dirname, 'config.json');
 assert.ok(fs.existsSync(configFilePath), 'config file not found at path: ' + configFilePath);
 var config = require('nconf').argv().env().file({ file: configFilePath });
 
-var createViews = require('../lib/createViews');
 before(function (done) {
   getDB(config, function (err, db) {
     var data = { db: db};
     createIfNeeded(db, function (err, reply) {
-      should.not.exist(err)
-      createViews(data, function (err, reply) {
-        should.not.exist(err);
-        done();
-      });
+      var docsFilePath = path.join(__dirname, '../docs')
+      var cmd = 'couchdb-update-views --config '+configFilePath + ' --docsDir ' + docsFilePath
+      var child = exec(cmd, function (err, stdout, stderr) {
+        inspect(stdout, 'stdout')
+        inspect(stderr, 'stderr')
+        should.not.exist(err)
+        done()
+      })
     });
   });
 });

@@ -1,4 +1,3 @@
-var createViews = require('./lib/createViews')
 var findProfile = require('./lib/findUserProfile')
 var getOrCreateProfile = require('./lib/getOrCreateProfile')
 var checkPassword = require('./lib/checkPassword')
@@ -7,6 +6,5 @@ module.exports = {
   getOrCreateProfile: getOrCreateProfile,
   findProfile: findProfile,
   checkPassword: checkPassword,
-  hashPassword: hashPassword,
-  createViews: createViews
+  hashPassword: hashPassword
 }
