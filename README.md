@@ -11,31 +11,20 @@ npm install couch-profile
 ```
 
 # Usage
-To use the module you will first need to setup a [cradle](https://github.com/cloudhead/cradle) connection.
+To use the module you will first need to setup a [cradle](https://github.com/cloudhead/cradle) connection. A few views are needed in your database to use couch profiles. Look in the <project_roo>/docs/ folder to see the views needed. You can easily create these view using the [couchdb-update-views](https://github.com/nisaacson/couchdb-update-views)
 
 ## API
 Look at index.js to see the full public api available. The following functions are available for use
 
-- createViews
 - findProfile
 - getOrCreateProfile
 - checkPassword
 - hashPassword
 
 ## Instatiate Views
-```javascript
-var couchProfile = require('couch-profile')
-var db = <cradle database connection>
-var viewData = {
-  db: db
-}
-couchProfile.createViews(viewData, function(err) {
-  if (err) {
-    inspect(err, 'error creating couch profile views')
-    return
-  }
-  inspect('couch-profile views created correctly')
-})
+```bash
+npm install -g couchdb-update-views
+couchdb-update-views --config <path/to/config.json> --docsDir <couch-profile_project_root>/docs
 ```
 
 
