@@ -56,9 +56,9 @@ describe('find profiles', function () {
       email: email
     };
     createUserProfile(data, function (err, reply) {
-      reply.should.have.property('id');
-      reply.should.have.property('rev');
-      var id = reply.id;
+      reply.should.have.property('_id');
+      reply.should.have.property('_rev');
+      var id = reply._id;
       db.get(id, function (err, reply) {
         should.not.exist(err);
         should.exist(reply, 'profile not created correctly');
