@@ -1,6 +1,7 @@
 {
   "couch": {
-    "host": "http://localhost",
+    "host": "localhost",
+    "protocol": "http",
     "database": "couchdb_profiles",
     "port": 5984
   }

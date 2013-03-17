@@ -1,6 +1,6 @@
 {
   "name": "couch-profile",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "description": "Store profile information in couchdb",
   "main": "index.js",
   "scripts": {
@@ -26,7 +26,7 @@
     "eyespect": "~0.1.8",
     "cradle": "~0.6.4",
     "required-keys": "~1.0.4",
-    "bcrypt-nodejs": "0.0.3"
+    "bcrypt-nodejs": "git://github.com/nisaacson/bcrypt-nodejs.git"
   },
   "devDependencies": {
     "should": "~1.2.2",
